@@ -80,15 +80,15 @@ function deleteFila(id) {
 function formatFecha(fecha) {
     if (!fecha) return ''; 
     const date = new Date(fecha);
-    const timezoneOffset = date.getTimezoneOffset() * 60000; 
-    const limaDate = new Date(date.getTime() + timezoneOffset + (5 * 60 * 60 * 1000)); 
-    const year = limaDate.getFullYear();
-    const month = String(limaDate.getMonth() + 1).padStart(2, '0'); 
-    const day = String(limaDate.getDate()).padStart(2, '0');
-    const hours = String(limaDate.getHours()).padStart(2, '0');
-    const minutes = String(limaDate.getMinutes()).padStart(2, '0');
-    return `${year}-${month}-${day} ${hours}:${minutes}`;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    
+    return `${year}-${month}-${day} ${hours}:${minutes}`; 
 }
+
 
 
 function getTabla() {
@@ -107,7 +107,6 @@ function getTabla() {
                             <i class="fas fa-trash"></i>
                         </button>`;
                     
-                    // Formatear la fecha antes de agregarla a la tabla
                     const fechaFormateada = formatFecha(denuncia.fecha);
                     
                     t.row.add([botonera, denuncia.id, denuncia.titulo, denuncia.descripcion, denuncia.ubicacion, denuncia.ciudadano, denuncia.telefono, fechaFormateada, denuncia.estado]);
@@ -123,18 +122,17 @@ function getTabla() {
 function setFecha(value) {
     if (value) {
         const date = new Date(value);
-        const utcOffset = date.getTimezoneOffset(); // Desfase horario en minutos
-        const adjustedTime = new Date(date.getTime() + (utcOffset * 60 * 1000));
-        const year = adjustedTime.getFullYear();
-        const month = String(adjustedTime.getMonth() + 1).padStart(2, '0'); // Meses son 0-indexados
-        const day = String(adjustedTime.getDate()).padStart(2, '0');
-        const hours = String(adjustedTime.getHours()).padStart(2, '0');
-        const minutes = String(adjustedTime.getMinutes()).padStart(2, '0');
-        const inputDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-        $("#fecha").val(inputDateTime); // Asigna el valor al campo de entrada
+        
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); 
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        
+        const inputDateTime = `${year}-${month}-${day} ${hours}:${minutes}`;
+        $("#fecha").val(inputDateTime);
     }
 }
-
 
 
 

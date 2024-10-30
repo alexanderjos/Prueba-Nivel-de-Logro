@@ -125,6 +125,11 @@
                                     <input type="datetime-local" class="form-control" id="fecha" required>
                                 </div>
                             </div>
+                            
+                            <script>
+                                // Establecer la fecha y hora en la zona horaria de Lima (UTC-5)
+                                document.getElementById('fecha').value = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Lima" })).toISOString().slice(0, 16);
+                            </script>
                             <div class="col-md-6 col-12"> <!-- Responsive en todos los tamaños -->
                                 <div class="form-group">
                                     <label for="estado">Estado</label>
@@ -181,6 +186,7 @@
 <script src="js/scripts/denuncias.js"></script>
 <!-- scripts de cada plantilla -->
 <!--Fin Scripts -->
+
 </body>
 
 </html>

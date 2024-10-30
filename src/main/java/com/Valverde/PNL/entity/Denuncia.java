@@ -36,20 +36,14 @@
         @Column(name="ciudadano", length = 100)
         private String ciudadano;
         
-        @Column(name = "telefono_ciudadano", precision = 15)
+        @Column(name = "telefono_ciudadano", length = 15)
         private String telefono;
 
         @Column(name = "fecha_registro")
         @Temporal(TemporalType.TIMESTAMP)
         private Date fecha;
 
-        @Column(name = "created_at")
-        @Temporal(TemporalType.TIMESTAMP)
-        @CreatedDate
-        private Date createdAt;
 
-        @Column(name = "updated_at")
-        @Temporal(TemporalType.TIMESTAMP)
-        @LastModifiedDate
-        private Date updatedAt;
+
+
     }
